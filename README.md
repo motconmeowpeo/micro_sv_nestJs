@@ -36,13 +36,10 @@ $ yarn install
 
 ```bash
 # development
-$ yarn run start
+$ npm run start.auth
+$ npm run start.email
+$ npm run start.message
 
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
 ```
 
 ## Test

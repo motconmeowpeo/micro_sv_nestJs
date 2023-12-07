@@ -1,0 +1,18 @@
+version: '0.1'
+
+services:
+  redis:
+    image: redis:7.0.5-alpine
+    ports:
+      - 6379:6379
+    command: ['redis-server']
+    networks:
+      - webnet
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
+
+networks:
+  webnet:
