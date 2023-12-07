@@ -26,24 +26,6 @@
       "compilerOptions": {
         "tsConfigPath": "apps/api-message/tsconfig.app.json"
       }
-    },
-    "test": {
-      "type": "library",
-      "root": "libs/test",
-      "entryFile": "index",
-      "sourceRoot": "libs/test/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/test/tsconfig.lib.json"
-      }
-    },
-    "test1": {
-      "type": "library",
-      "root": "libs/test1",
-      "entryFile": "index",
-      "sourceRoot": "libs/test1/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/test1/tsconfig.lib.json"
-      }
     }
   },
   "compilerOptions": {

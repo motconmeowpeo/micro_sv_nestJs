@@ -10,9 +10,21 @@ services:
       - webnet
     volumes:
       - redis-data:/data
-
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgress
+      - POSTGRES_DB=nika
+    ports:
+      - '5433:5432'
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    networks:
+      - webnet
 volumes:
   redis-data:
+  pg-data:
 
 networks:
   webnet:

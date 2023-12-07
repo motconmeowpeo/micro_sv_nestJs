@@ -42,8 +42,8 @@ Step 1: Install
 <p>Step 3: Standing in root directory</p>
 
 ```bash
-# redis storage
-$ docker compose up redis
+# redis and postgres storage
+$ yarn docker.start
 ```
 
 ## Running the app
@@ -54,6 +54,16 @@ $ yarn run start.auth
 $ yarn run start.email
 $ yarn run start.message
 
+```
+
+## Migrate database
+
+```bash
+# migrate
+$ yarn run db.migrate
+
+# format prisma
+$ yarn run db.format
 ```
 
 ## Support
