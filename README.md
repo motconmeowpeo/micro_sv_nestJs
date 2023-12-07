@@ -32,27 +32,28 @@
 $ yarn install
 ```
 
+## Running redis storage
+
+<P>
+Step 1: Install 
+<a href = "https://docs.docker.com/engine/install/" target="_blank">Docker Desktop</a>
+</P>
+<p>Step 2: Running Docker Desktop</p>
+<p>Step 3: Standing in root directory</p>
+
+```bash
+# redis storage
+$ docker compose up redis
+```
+
 ## Running the app
 
 ```bash
 # development
-$ npm run start.auth
-$ npm run start.email
-$ npm run start.message
+$ yarn run start.auth
+$ yarn run start.email
+$ yarn run start.message
 
-```
-
-## Test
-
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
 ```
 
 ## Support
@@ -61,7 +62,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Author - [Hien Nguyen](https://nikanguyen.vercel.app/home)
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
 
