@@ -4,7 +4,7 @@ import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
-  const API_MESSAGE = `api/v1`;
+  const API_MESSAGE = `api/v1/message`;
   const PORT = 17002;
 
   const app = await NestFactory.create(ApiMessageModule);

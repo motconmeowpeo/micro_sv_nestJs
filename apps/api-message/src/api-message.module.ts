@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { MessageModule } from './message/message.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
-  imports: [MessageModule],
+  imports: [MessagesModule],
 })
 export class ApiMessageModule {}

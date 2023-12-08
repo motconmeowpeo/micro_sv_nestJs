@@ -26,6 +26,17 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Technical
+
+```
+NestJs
+Docker-compose
+Redis storage
+Postgresql
+Websocket
+Cache
+```
+
 ## Installation
 
 ```bash
@@ -64,6 +75,12 @@ $ yarn run db.migrate
 
 # format prisma
 $ yarn run db.format
+```
+
+## Feel free
+
+```
+Open project and feel free :3
 ```
 
 ## Support
