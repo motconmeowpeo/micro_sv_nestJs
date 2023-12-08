@@ -13,6 +13,11 @@ export interface ISignInDto {
   password: string;
 }
 
+export interface IVerifyCodeDto {
+  email: string;
+  code: string;
+}
+
 export interface AuthUser {
   accessToken: string;
 }

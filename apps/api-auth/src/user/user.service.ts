@@ -6,6 +6,8 @@ import {
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { SignUpCommand } from './commands/sign-up/sign-up.command';
 import { SignInQuery } from './queries/sign-in/sign-in.query';
+import { IVerifyCodeDto } from '../../../../libs/core/models/user.model';
+import { VerifyCodeQuery } from './queries/verify-code/verify-code.query';
 
 @Injectable()
 export class UserService {
@@ -23,11 +25,7 @@ export class UserService {
     return this.queryBus.execute<SignInQuery>(new SignInQuery(signInDto));
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  verifyCode(payload: IVerifyCodeDto) {
+    return this.queryBus.execute<VerifyCodeQuery>(new VerifyCodeQuery(payload));
   }
 }

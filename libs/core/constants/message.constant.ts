@@ -1,0 +1,1 @@
+export const MESSAGE_SEND_CODE = 'MESSAGE_SEND_CODE';

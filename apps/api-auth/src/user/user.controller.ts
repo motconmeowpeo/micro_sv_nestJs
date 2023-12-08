@@ -13,6 +13,7 @@ import {
   ISignInDto,
 } from '../../../../libs/core/models/user.model';
 import { Public } from 'libs/core/decorators/public.decorator';
+import { IVerifyCodeDto } from 'libs/core/models/user.model';
 
 @Controller('user')
 export class UserController {
@@ -30,13 +31,9 @@ export class UserController {
     return this.userService.signIn(signInDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
+  @Public()
+  @Post('verify')
+  verifyCode(@Body() payload: IVerifyCodeDto) {
+    return this.userService.verifyCode(payload);
   }
 }
