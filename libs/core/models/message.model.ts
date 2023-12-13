@@ -3,3 +3,7 @@ export interface ICreateMessageDto {
   authorId: string;
   replyFor?: string;
 }
+
+export interface IGetAllMessageQuery {
+  authorId: string;
+}

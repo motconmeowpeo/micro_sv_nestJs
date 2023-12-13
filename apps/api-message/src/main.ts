@@ -9,7 +9,7 @@ async function bootstrap() {
 
   const app = await NestFactory.create(ApiMessageModule);
   await app.useGlobalGuards().useGlobalPipes().useGlobalInterceptors();
-  await app.setGlobalPrefix(API_MESSAGE).connectMicroservice({
+  await app.connectMicroservice({
     transport: Transport.REDIS,
     options: {
       port: 6379,
