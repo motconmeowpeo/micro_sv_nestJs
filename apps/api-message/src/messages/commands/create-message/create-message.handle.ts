@@ -17,13 +17,20 @@ export class CreateMessageHandle implements ICommandHandler {
     content,
     authorId,
     replyFor,
+    receivedId,
   }: ICreateMessageDto): Observable<Message> {
     return from(
       this.repository.message.create({
         data: {
           content,
           authorId,
-          replyFor,
+          receivedId,
+          replyForId: replyFor,
+        },
+        include: {
+          author: {
+            select: { id: true, username: true },
+          },
         },
       }),
     );

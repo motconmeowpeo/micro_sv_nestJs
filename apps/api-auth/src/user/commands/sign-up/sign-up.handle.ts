@@ -22,7 +22,7 @@ export class SignUpHandle implements ICommandHandler {
     @Inject('EMAIL_SERVICE') private emailClient: ClientProxy,
   ) {}
   execute({ payload }: SignUpCommand): Promise<boolean> {
-    const stream = this.validateEmail(payload.email).pipe(
+    const stream$ = this.validateEmail(payload.email).pipe(
       switchMap((isExisted) => {
         if (isExisted) {
           throw new BadRequestException({
@@ -36,7 +36,7 @@ export class SignUpHandle implements ICommandHandler {
         return this.sendCode(code, payload.email);
       }),
     );
-    return lastValueFrom(stream);
+    return lastValueFrom(stream$);
   }
 
   private validateEmail(email: string): Observable<boolean> {
@@ -68,8 +68,9 @@ export class SignUpHandle implements ICommandHandler {
   ): Observable<string> {
     return from(this.cacheService.get(email)).pipe(
       switchMap((code) => {
-        console.log(code);
         if (code) {
+          console.log(code);
+
           throw new BadRequestException({
             code: 'MANY_REQUEST',
             message: 'Your should request each 5 minute',
@@ -91,6 +92,10 @@ export class SignUpHandle implements ICommandHandler {
   private sendCode(code: string, email: string) {
     return this.emailClient
       .send<boolean>(MESSAGE_SEND_CODE, { code, email })
-      .pipe(map((value) => value));
+      .pipe(
+        map((value) => {
+          return value;
+        }),
+      );
   }
 }

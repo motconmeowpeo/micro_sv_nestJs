@@ -12,6 +12,7 @@ async function bootstrap() {
   const API_AUTH = `api/v1`;
   const PORT = 17000;
   const app = await NestFactory.create(ApiAuthModule);
+  await app.enableCors({ origin: '*' });
   await app
     .useGlobalGuards(new JwtAuthGuard(app.get(Reflector)))
     .useGlobalPipes()

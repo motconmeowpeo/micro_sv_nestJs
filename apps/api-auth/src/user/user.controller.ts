@@ -21,8 +21,9 @@ export class UserController {
 
   @Public()
   @Post('sign-up')
-  create(@Body() createUserDto: ICreateUserDto) {
-    return this.userService.signUp(createUserDto);
+  async create(@Body() createUserDto: ICreateUserDto) {
+    const value = await this.userService.signUp(createUserDto);
+    return value;
   }
 
   @Public()
@@ -35,5 +36,11 @@ export class UserController {
   @Post('verify')
   verifyCode(@Body() payload: IVerifyCodeDto) {
     return this.userService.verifyCode(payload);
+  }
+
+  @Public()
+  @Get('get-all')
+  getAll() {
+    return this.userService.getAll();
   }
 }

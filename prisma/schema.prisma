@@ -20,20 +20,32 @@ model User {
   role     Role    @default(USER)
   avatar   String?
 
-  messages Message[]
+  messagesFrom Message[] @relation("Author")
+  messagesTo Message[] @relation("Received")
 }
 
 model Message {
   id       String  @id @default(uuid())
   content  String
-  author   User    @relation(fields: [authorId], references: [id])
-  authorId String
-  replyFor String?
+  authorId String 
+  author User @relation("Author",fields: [authorId], references: [id])
+
+  receivedId String?  
+  received User? @relation("Received",fields: [receivedId],references: [id]) 
+
+  replyForId String? 
+  replyFor Message? @relation("MessageReply", fields: [replyForId], references: [id])
+
+  beReplyFor Message[] @relation("MessageReply")
+
   createAt DateTime @default(now())
   updateAt DateTime?
+
 }
 
 enum Role {
   ADMIN
   USER
 }
+
+

@@ -7,11 +7,25 @@ import { from, lastValueFrom } from 'rxjs';
 @QueryHandler(GetAllMessageQuery)
 export class GetAllMessageHandle implements IQueryHandler {
   constructor(private readonly repository: MessageRepository) {}
-  execute({ authorId }: GetAllMessageQuery): Promise<Message[]> {
+  execute({ payload }: GetAllMessageQuery): Promise<Message[]> {
     return lastValueFrom(
       from(
         this.repository.message.findMany({
-          where: { authorId: authorId.authorId },
+          where: {
+            authorId: { in: [payload.authorId, payload.receivedId] },
+            receivedId: { in: [payload.authorId, payload.receivedId] },
+          },
+          orderBy: {
+            createAt: 'asc',
+          },
+          include: {
+            author: {
+              select: {
+                username: true,
+                id: true,
+              },
+            },
+          },
         }),
       ),
     );
